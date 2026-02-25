@@ -90,7 +90,7 @@ func TestValidateInfo(t *testing.T) {
 		Asset:             "0xabcdefabcdefabcdefabcdefabcdefabcdefabcd",
 		Spender:           "0x000000000022D473030F116dDEE9F6B43aC78BA3",
 		Amount:            "115792089237316195423570985008687907853269984665640564039457584007913129639935",
-		SignedTransaction:  "0x02f8a4",
+		SignedTransaction: "0x02f8a4",
 		Version:           "1",
 	}
 

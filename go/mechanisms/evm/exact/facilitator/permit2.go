@@ -228,7 +228,8 @@ func SettlePermit2(
 
 	var txHash string
 
-	if eip2612Info != nil {
+	switch {
+	case eip2612Info != nil:
 		// Use settleWithPermit - includes the EIP-2612 permit
 		v, r, s, splitErr := splitEip2612Signature(eip2612Info.Signature)
 		if splitErr != nil {
@@ -269,7 +270,7 @@ func SettlePermit2(
 			witnessStruct,
 			signatureBytes,
 		)
-	} else if erc20Info != nil && facilCtx != nil {
+	case erc20Info != nil && facilCtx != nil:
 		// ERC-20 approval path: broadcast pre-signed approve tx, then settle
 		ext, ok := facilCtx.GetExtension(erc20approvalgassponsor.ERC20ApprovalGasSponsoring.Key()).(*erc20approvalgassponsor.Erc20ApprovalFacilitatorExtension)
 		if ok && ext != nil && ext.Signer != nil {
@@ -313,7 +314,7 @@ func SettlePermit2(
 				signatureBytes,
 			)
 		}
-	} else {
+	default:
 		// Standard settle - no gas sponsoring extension
 		txHash, err = signer.WriteContract(
 			ctx,

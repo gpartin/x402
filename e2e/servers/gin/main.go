@@ -375,11 +375,12 @@ func main() {
 ║  SVM Payee:   %-40s ║
 ║                                                        ║
 ║  Endpoints:                                            ║
-║  • GET  /protected         (EIP-3009 payment)         ║
-║  • GET  /protected-svm     (SVM payment)              ║
-║  • GET  /protected-permit2 (Permit2 payment)          ║
-║  • GET  /health            (no payment required)      ║
-║  • POST /close             (shutdown server)          ║
+║  • GET  /protected              (EIP-3009 payment)    ║
+║  • GET  /protected-svm          (SVM payment)         ║
+║  • GET  /protected-permit2      (Permit2 payment)     ║
+║  • GET  /protected-permit2-erc20 (Permit2 ERC-20)     ║
+║  • GET  /health                 (no payment required)  ║
+║  • POST /close                  (shutdown server)      ║
 ╚════════════════════════════════════════════════════════╝
 `, port, evmNetwork, evmPayeeAddress, svmNetwork, svmPayeeAddress)
 

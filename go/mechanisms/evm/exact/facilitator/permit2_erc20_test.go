@@ -44,8 +44,8 @@ func buildSignedApproveTransaction(t *testing.T, privateKeyHex string, tokenAddr
 	tx := types.NewTx(&types.DynamicFeeTx{
 		ChainID:   chainID,
 		Nonce:     0,
-		GasTipCap: big.NewInt(1000000000),  // 1 gwei
-		GasFeeCap: big.NewInt(2000000000),  // 2 gwei
+		GasTipCap: big.NewInt(1000000000), // 1 gwei
+		GasFeeCap: big.NewInt(2000000000), // 2 gwei
 		Gas:       70000,
 		To:        &toAddr,
 		Value:     big.NewInt(0),
@@ -80,7 +80,7 @@ func TestValidateErc20ApprovalForPayment(t *testing.T) {
 			Asset:             tokenAddress,
 			Spender:           evm.PERMIT2Address,
 			Amount:            evm.MaxUint256().String(),
-			SignedTransaction:  signedTx,
+			SignedTransaction: signedTx,
 			Version:           "1",
 		}
 		result := ValidateErc20ApprovalForPayment(info, payer, tokenAddress)
@@ -95,7 +95,7 @@ func TestValidateErc20ApprovalForPayment(t *testing.T) {
 			Asset:             tokenAddress,
 			Spender:           evm.PERMIT2Address,
 			Amount:            "12345",
-			SignedTransaction:  signedTx,
+			SignedTransaction: signedTx,
 			Version:           "1",
 		}
 		result := ValidateErc20ApprovalForPayment(info, payer, tokenAddress)
@@ -111,7 +111,7 @@ func TestValidateErc20ApprovalForPayment(t *testing.T) {
 			Asset:             tokenAddress,
 			Spender:           evm.PERMIT2Address,
 			Amount:            evm.MaxUint256().String(),
-			SignedTransaction:  signedTx,
+			SignedTransaction: signedTx,
 			Version:           "1",
 		}
 		result := ValidateErc20ApprovalForPayment(info, payer, tokenAddress)
@@ -126,7 +126,7 @@ func TestValidateErc20ApprovalForPayment(t *testing.T) {
 			Asset:             "0x0000000000000000000000000000000000000001",
 			Spender:           evm.PERMIT2Address,
 			Amount:            evm.MaxUint256().String(),
-			SignedTransaction:  signedTx,
+			SignedTransaction: signedTx,
 			Version:           "1",
 		}
 		result := ValidateErc20ApprovalForPayment(info, payer, tokenAddress)
@@ -141,7 +141,7 @@ func TestValidateErc20ApprovalForPayment(t *testing.T) {
 			Asset:             tokenAddress,
 			Spender:           "0x0000000000000000000000000000000000000001",
 			Amount:            evm.MaxUint256().String(),
-			SignedTransaction:  signedTx,
+			SignedTransaction: signedTx,
 			Version:           "1",
 		}
 		result := ValidateErc20ApprovalForPayment(info, payer, tokenAddress)
@@ -157,7 +157,7 @@ func TestValidateErc20ApprovalForPayment(t *testing.T) {
 			Asset:             tokenAddress,
 			Spender:           evm.PERMIT2Address,
 			Amount:            evm.MaxUint256().String(),
-			SignedTransaction:  "0xdeadbeef1234", // valid hex but not a valid tx
+			SignedTransaction: "0xdeadbeef1234", // valid hex but not a valid tx
 			Version:           "1",
 		}
 		result := ValidateErc20ApprovalForPayment(info, payer, tokenAddress)
@@ -175,7 +175,7 @@ func TestValidateErc20ApprovalForPayment(t *testing.T) {
 			Asset:             tokenAddress,
 			Spender:           evm.PERMIT2Address,
 			Amount:            evm.MaxUint256().String(),
-			SignedTransaction:  wrongSignedTx,
+			SignedTransaction: wrongSignedTx,
 			Version:           "1",
 		}
 		result := ValidateErc20ApprovalForPayment(info, payer, tokenAddress)
@@ -212,7 +212,7 @@ func TestValidateErc20ApprovalForPayment(t *testing.T) {
 			Asset:             tokenAddress,
 			Spender:           evm.PERMIT2Address,
 			Amount:            evm.MaxUint256().String(),
-			SignedTransaction:  wrongSignedTxHex,
+			SignedTransaction: wrongSignedTxHex,
 			Version:           "1",
 		}
 		result := ValidateErc20ApprovalForPayment(info, payer, tokenAddress)
@@ -254,7 +254,7 @@ func TestValidateErc20ApprovalForPayment(t *testing.T) {
 			Asset:             tokenAddress,
 			Spender:           evm.PERMIT2Address,
 			Amount:            evm.MaxUint256().String(),
-			SignedTransaction:  wrongSignedTxHex,
+			SignedTransaction: wrongSignedTxHex,
 			Version:           "1",
 		}
 		result := ValidateErc20ApprovalForPayment(info, payer, tokenAddress)
@@ -273,7 +273,7 @@ func TestValidateErc20ApprovalForPayment(t *testing.T) {
 			Asset:             tokenAddress,
 			Spender:           evm.PERMIT2Address,
 			Amount:            evm.MaxUint256().String(),
-			SignedTransaction:  differentSignedTx,
+			SignedTransaction: differentSignedTx,
 			Version:           "1",
 		}
 		result := ValidateErc20ApprovalForPayment(info, payer, tokenAddress)

@@ -76,7 +76,7 @@ func SignErc20ApprovalTransaction(
 		Asset:             normalizedToken,
 		Spender:           spender,
 		Amount:            maxUint256.String(),
-		SignedTransaction:  signedTxHex,
+		SignedTransaction: signedTxHex,
 		Version:           "1",
 	}, nil
 }

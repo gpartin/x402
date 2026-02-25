@@ -183,8 +183,8 @@ func (s *ClientSigner) GetTransactionCount(ctx context.Context, address string) 
 // Requires an ethclient to be provided via NewClientSignerFromPrivateKeyWithClient.
 func (s *ClientSigner) EstimateFeesPerGas(ctx context.Context) (maxFeePerGas, maxPriorityFeePerGas *big.Int, err error) {
 	gwei := big.NewInt(1_000_000_000)
-	fallbackMax := new(big.Int).Mul(big.NewInt(1), gwei)         // 1 gwei
-	fallbackTip := new(big.Int).Div(gwei, big.NewInt(10))        // 0.1 gwei
+	fallbackMax := new(big.Int).Mul(big.NewInt(1), gwei)  // 1 gwei
+	fallbackTip := new(big.Int).Div(gwei, big.NewInt(10)) // 0.1 gwei
 
 	if s.ethClient == nil {
 		return fallbackMax, fallbackTip, nil
@@ -192,7 +192,7 @@ func (s *ClientSigner) EstimateFeesPerGas(ctx context.Context) (maxFeePerGas, ma
 
 	tip, err := s.ethClient.SuggestGasTipCap(ctx)
 	if err != nil {
-		return fallbackMax, fallbackTip, nil
+		return fallbackMax, fallbackTip, err
 	}
 
 	// Get base fee from the latest block header
@@ -200,7 +200,7 @@ func (s *ClientSigner) EstimateFeesPerGas(ctx context.Context) (maxFeePerGas, ma
 	if err != nil {
 		// Use tip + 1 gwei as maxFee
 		maxFee := new(big.Int).Add(tip, gwei)
-		return maxFee, tip, nil
+		return maxFee, tip, err
 	}
 
 	// maxFeePerGas = 2 * baseFee + tip (EIP-1559 convention)
