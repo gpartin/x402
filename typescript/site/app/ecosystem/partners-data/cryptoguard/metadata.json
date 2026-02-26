@@ -1,0 +1,7 @@
+{
+  "name": "CryptoGuard",
+  "description": "Per-transaction crypto trade validator powered by WaveGuard physics. One API call before every trade: resolves token, runs anomaly scan, checks rug pull risk, cross-references CEX/DEX pricing, and returns PROCEED/CAUTION/BLOCK. Also provides portfolio scanning, historical self-comparison, and new DEX pair discovery. $0.05/call via USDC on Base and Solana.",
+  "logoUrl": "/logos/cryptoguard.svg",
+  "websiteUrl": "https://gpartin--cryptoguard-api-fastapi-app.modal.run",
+  "category": "Services/Endpoints"
+}
